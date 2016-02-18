@@ -6,6 +6,7 @@ function Thermostat() {
   this.MIN_TEMP = 10;
   this.MAX_TEMP_PSM_ON = 25;
   this.MAX_TEMP_PSM_OFF = 32;
+  this.MEDIUM_TEMP = 18;
 };
 
 Thermostat.prototype.currentTemp = function() {
@@ -13,10 +14,10 @@ Thermostat.prototype.currentTemp = function() {
 };
 
 Thermostat.prototype.displayTemp = function() {
-  if(this.temperature < 18){
+  if(this.temperature < this.MEDIUM_TEMP){
     return "GREEN";
   }
-  else if(this.temperature < 25) {
+  else if(this.temperature < this.MAX_TEMP_PSM_ON) {
     return "YELLOW";
   };
   return "RED";
