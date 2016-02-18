@@ -6,7 +6,7 @@ function Thermostat() {
 };
 
 Thermostat.prototype.upButton = function() {
-  if(this.temperature === 25) {
+  if(this._maxTemp() === true) {
     throw "Maximum temperature reached.";
   };
   this.temperature++;
@@ -19,6 +19,19 @@ Thermostat.prototype.downButton = function() {
   this.temperature--;
 };
 
+Thermostat.prototype.changeMode = function() {
+  this.powerSM = !this.powerSM;
+};
+
 Thermostat.prototype._minTemp = function() {
   return this.temperature === 10;
+};
+
+Thermostat.prototype._maxTemp = function() {
+  if(this.powerSM === true){
+    return this.temperature === 25;
+  }
+  else {
+    return this.temperature === 32;
+  };
 };

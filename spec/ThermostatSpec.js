@@ -39,4 +39,17 @@ describe('Thermostat', function() {
     };
     expect(function() { thermostat.upButton() }).toThrow("Maximum temperature reached.");
   });
+
+  it('can turn power saving mode off', function() {
+    thermostat.changeMode();
+    expect(thermostat.powerSM).toBe(false);
+  });
+
+  it('power saving mode is off, max temp is 32', function() {
+    thermostat.changeMode();
+    for(var i=0; i<12; i++) {
+      thermostat.upButton();
+    };
+    expect(function() { thermostat.upButton() }).toThrow("Maximum temperature reached.");
+  });
 });
