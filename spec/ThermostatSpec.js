@@ -21,4 +21,11 @@ describe('Thermostat', function() {
     thermostat.downButton();
     expect(thermostat.temperature).toEqual(19);
   });
+
+  it('won\'t go lower than 10 degrees', function() {
+    for(var i = 0; i<10; i++) {
+      thermostat.downButton();
+    };
+    expect(function() {thermostat.downButton()}).toThrow("Minimum temperature reached.");
+  });
 });

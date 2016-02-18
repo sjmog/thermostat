@@ -9,5 +9,12 @@ Thermostat.prototype.upButton = function() {
 };
 
 Thermostat.prototype.downButton = function() {
+  if(this._minTemp() === true) {
+    throw "Minimum temperature reached.";
+  };
   this.temperature--;
+};
+
+Thermostat.prototype._minTemp = function() {
+  return this.temperature === 10;
 };
