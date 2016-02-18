@@ -2,9 +2,13 @@
 
 function Thermostat() {
   this.temperature = 20;
+  this.powerSM = true;
 };
 
 Thermostat.prototype.upButton = function() {
+  if(this.temperature === 25) {
+    throw "Maximum temperature reached.";
+  };
   this.temperature++;
 };
 

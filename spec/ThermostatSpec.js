@@ -28,4 +28,15 @@ describe('Thermostat', function() {
     };
     expect(function() {thermostat.downButton()}).toThrow("Minimum temperature reached.");
   });
+
+  it('starts with power saving mode on', function() {
+    expect(thermostat.powerSM).toBe(true);
+  });
+
+  it('when power saving mode is on, max temp is 25', function() {
+    for(var i = 0; i < 5; i++) {
+      thermostat.upButton();
+    };
+    expect(function() { thermostat.upButton() }).toThrow("Maximum temperature reached.");
+  });
 });
