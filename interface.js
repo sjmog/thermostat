@@ -27,6 +27,20 @@ $(document).ready(function() {
     };
   });
 
+  $('.local-city').change(function(){
+    var city = $('.local-city').val();
+    displayWeather(city);
+  });
+
+  function displayWeather(city) {
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q='+ city;
+    var token = '&appid=f83f44a7a0afa1876ffd608629d71ef1';
+    var units = '&units=metric';
+    $.get(url + token + units, function(data){
+      $('.local-temperature').text(data.main.temp + " degrees");
+    });
+  };
+
   function updateTemperature(){
     $('.temperature').text(thermostat.currentTemp() + " degrees");
     $('.temperature').attr('id', thermostat.displayTemp());
