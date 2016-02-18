@@ -51,9 +51,9 @@ Thermostat.prototype._minTemp = function() {
 
 Thermostat.prototype._maxTemp = function() {
   if(this.powerSM === true){
-    return this.temperature === this.MAX_TEMP_PSM_ON;
+    return this.temperature >= this.MAX_TEMP_PSM_ON;
   }
   else {
-    return this.temperature === this.MAX_TEMP_PSM_OFF;
+    return this.temperature >= this.MAX_TEMP_PSM_OFF;
   };
 };
