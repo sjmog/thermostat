@@ -9,17 +9,17 @@ describe('Thermostat', function() {
   });
 
   it('starts at 20 degrees', function() {
-    expect(thermostat.temperature).toEqual(20);
+    expect(thermostat.currentTemp()).toEqual(20);
   });
 
   it('increases temperature with up button', function() {
     thermostat.upButton();
-    expect(thermostat.temperature).toEqual(21);
+    expect(thermostat.currentTemp()).toEqual(21);
   });
 
   it('decreases temperature with down button', function() {
     thermostat.downButton();
-    expect(thermostat.temperature).toEqual(19);
+    expect(thermostat.currentTemp()).toEqual(19);
   });
 
   it('won\'t go lower than 10 degrees', function() {
@@ -57,5 +57,22 @@ describe('Thermostat', function() {
     thermostat.upButton();
     thermostat.resetTemp();
     expect(thermostat.temperature).toEqual(20);
+
+  it('colours display green when lower than 18 degrees', function() {
+    for(var i=0; i<3; i++) {
+      thermostat.downButton();
+    };
+    expect(thermostat.displayTemp()).toEqual('GREEN');
+  });
+
+  it('colours display yellow when between 18 and 25 degrees', function() {
+    expect(thermostat.displayTemp()).toEqual('YELLOW');
+  });
+
+  it('colours display red when above 25 degrees', function() {
+    for(var i=0; i<5; i++) {
+      thermostat.upButton();
+    };
+    expect(thermostat.displayTemp()).toEqual('RED');
   });
 });
