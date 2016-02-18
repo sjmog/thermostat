@@ -52,4 +52,10 @@ describe('Thermostat', function() {
     };
     expect(function() { thermostat.upButton() }).toThrow("Maximum temperature reached.");
   });
+
+  it('can reset temperature', function() {
+    thermostat.upButton();
+    thermostat.resetTemp();
+    expect(thermostat.temperature).toEqual(20);
+  });
 });

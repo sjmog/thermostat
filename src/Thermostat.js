@@ -23,6 +23,10 @@ Thermostat.prototype.changeMode = function() {
   this.powerSM = !this.powerSM;
 };
 
+Thermostat.prototype.resetTemp = function() {
+  this.temperature = 20;
+};
+
 Thermostat.prototype._minTemp = function() {
   return this.temperature === 10;
 };
