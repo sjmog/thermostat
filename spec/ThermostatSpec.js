@@ -30,7 +30,7 @@ describe('Thermostat', function() {
   });
 
   it('starts with power saving mode on', function() {
-    expect(thermostat.powerSM).toBe(true);
+    expect(thermostat.powerSavingMode).toBe(true);
   });
 
   it('when power saving mode is on, max temp is 25', function() {
@@ -42,7 +42,7 @@ describe('Thermostat', function() {
 
   it('can turn power saving mode off', function() {
     thermostat.changeMode();
-    expect(thermostat.powerSM).toBe(false);
+    expect(thermostat.powerSavingMode).toBe(false);
   });
 
   it('power saving mode is off, max temp is 32', function() {
@@ -57,6 +57,7 @@ describe('Thermostat', function() {
     thermostat.upButton();
     thermostat.resetTemp();
     expect(thermostat.temperature).toEqual(20);
+  });
 
   it('colours display green when lower than 18 degrees', function() {
     for(var i=0; i<3; i++) {

@@ -2,32 +2,23 @@
 <html>
 <head>
   <title>Thermostat</title>
-  <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <section>
-    <h1>Local Temperature: <span class="local-temperature"></span></h1>
-    <select class="local-city">
-      <option value="London">London</option>
-      <option value="Newcastle upon Tyne">Newcastle upon Tyne</option>
-      <option value="Colchester,GB">Colchester</option>
-      <option value="Edinburgh">Edinburgh</option>
+  <main>
+    <article>
+      <h1 id="temperature"></h1>
+    </article>
+    <aside>
+      <button id="temperature_up_button">+</button>
+      <button id="temperature_down_button">-</button>
+      <button id="reset_temperature">Reset</button>
+      Power saving mode is <span id="power_saving_status">on</span>
+      <button id="toggle_power_saving">Power Saving</button>
+    </aside>
+  </main>
 
-    </select>
-    <h1 class="temperature"></h1>
-    <p>
-      <button class="temperature-upButton">+</button>
-      <button class="temperature-downButton">-</button>
-      <button class="temperature-resetTemp">Reset</button>
-      Power saving mode is <span class="power-saving-status">on</span>
-      <button class="power-saving-mode">Power Saving</button>
-    </p>
-  </section>
   <script src="src/Thermostat.js"></script>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="interface.js"></script>
-
 </body>
 </html>
