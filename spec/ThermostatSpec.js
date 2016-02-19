@@ -12,21 +12,21 @@ describe('Thermostat', function() {
     expect(thermostat.currentTemp()).toEqual(20);
   });
 
-  it('increases temperature with up button', function() {
-    thermostat.upButton();
+  it('increases temperature', function() {
+    thermostat.increaseTemperature();
     expect(thermostat.currentTemp()).toEqual(21);
   });
 
-  it('decreases temperature with down button', function() {
-    thermostat.downButton();
+  it('decreases temperature', function() {
+    thermostat.decreaseTemperature();
     expect(thermostat.currentTemp()).toEqual(19);
   });
 
   it('won\'t go lower than 10 degrees', function() {
     for(var i = 0; i<10; i++) {
-      thermostat.downButton();
+      thermostat.decreaseTemperature();
     };
-    expect(function() {thermostat.downButton()}).toThrow("Minimum temperature reached.");
+    expect(function() {thermostat.decreaseTemperature()}).toThrow("Minimum temperature reached.");
   });
 
   it('starts with power saving mode on', function() {
@@ -35,9 +35,9 @@ describe('Thermostat', function() {
 
   it('when power saving mode is on, max temp is 25', function() {
     for(var i = 0; i < 5; i++) {
-      thermostat.upButton();
+      thermostat.increaseTemperature();
     };
-    expect(function() { thermostat.upButton() }).toThrow("Maximum temperature reached.");
+    expect(function() { thermostat.increaseTemperature() }).toThrow("Maximum temperature reached.");
   });
 
   it('can turn power saving mode off', function() {
@@ -48,20 +48,20 @@ describe('Thermostat', function() {
   it('power saving mode is off, max temp is 32', function() {
     thermostat.changeMode();
     for(var i=0; i<12; i++) {
-      thermostat.upButton();
+      thermostat.increaseTemperature();
     };
-    expect(function() { thermostat.upButton() }).toThrow("Maximum temperature reached.");
+    expect(function() { thermostat.increaseTemperature() }).toThrow("Maximum temperature reached.");
   });
 
   it('can reset temperature', function() {
-    thermostat.upButton();
+    thermostat.increaseTemperature();
     thermostat.resetTemp();
     expect(thermostat.temperature).toEqual(20);
   });
 
   it('colours display green when lower than 18 degrees', function() {
     for(var i=0; i<3; i++) {
-      thermostat.downButton();
+      thermostat.decreaseTemperature();
     };
     expect(thermostat.displayTemp()).toEqual('GREEN');
   });
@@ -72,7 +72,7 @@ describe('Thermostat', function() {
 
   it('colours display red when above 25 degrees', function() {
     for(var i=0; i<5; i++) {
-      thermostat.upButton();
+      thermostat.increaseTemperature();
     };
     expect(thermostat.displayTemp()).toEqual('RED');
   });

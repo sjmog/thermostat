@@ -23,14 +23,14 @@ Thermostat.prototype.displayTemp = function() {
   return "RED";
 };
 
-Thermostat.prototype.upButton = function() {
+Thermostat.prototype.increaseTemperature = function() {
   if(this._maxTemp() === true) {
     throw "Maximum temperature reached.";
   };
   this.temperature++;
 };
 
-Thermostat.prototype.downButton = function() {
+Thermostat.prototype.decreaseTemperature = function() {
   if(this._minTemp() === true) {
     throw "Minimum temperature reached.";
   };
